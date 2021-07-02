@@ -1,14 +1,14 @@
 package service;
 
 public class InvoiceSummary {
-	private double averageFare;
-	private int numberOfRides;
-	private double totalFare;
+	private final int numOfRides;
+	private final double totalFare;
+	private final double avgFare;
 
-	public InvoiceSummary(int numberOfRides, double totalFare) {
-		this.numberOfRides = numberOfRides;
+	public InvoiceSummary(int numOfRides, double totalFare) {
+		this.numOfRides = numOfRides;
 		this.totalFare = totalFare;
-		this.averageFare = this.totalFare / this.numberOfRides;
+		this.avgFare = this.totalFare / this.numOfRides;
 	}
 
 	@Override
@@ -18,8 +18,8 @@ public class InvoiceSummary {
 		if (obj == null || getClass() != obj.getClass())
 			return false;
 		InvoiceSummary that = (InvoiceSummary) obj;
-		return Double.compare(that.averageFare, averageFare) == 0 && numberOfRides == that.numberOfRides
-				&& Double.compare(that.totalFare, totalFare) == 0;
+		return numOfRides == that.numOfRides && Double.compare(that.totalFare, totalFare) == 0
+				&& Double.compare(that.avgFare, avgFare) == 0;
 	}
 
 }
