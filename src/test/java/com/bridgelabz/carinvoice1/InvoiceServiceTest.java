@@ -9,6 +9,7 @@ package com.bridgelabz.carinvoice1;
 import org.junit.Assert;
 import org.junit.Test;
 
+import model.Ride;
 import service.InvoiceService;
 
 public class InvoiceServiceTest {
@@ -34,6 +35,17 @@ public class InvoiceServiceTest {
 		int time = 1;
 		double totalFare = invoiceService.calculateFare(distance, time);
 		Assert.assertEquals(5, totalFare, 0.0);
+	}
+	
+	/**
+	 * method to return total fare of cab
+	 */
+	@Test
+	public void givenMultipleRides_ShoulReturnTotalFare() {
+		InvoiceService invoiceService = new InvoiceService();
+		Ride[] rides = { new Ride(2.0, 5), new Ride(0.5, 5), new Ride(0.1, 1), };
+		double totalFare = invoiceService.calculateFare(rides);
+		Assert.assertEquals(40, totalFare, 0.0);
 	}
 
 }
